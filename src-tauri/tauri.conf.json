@@ -1,6 +1,6 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "notepad-vue",
+  "productName": "SillyScribe",
   "version": "0.1.0",
   "identifier": "io.github.theflamefish.vue-notepad",
   "build": {
@@ -12,7 +12,7 @@
   "app": {
     "windows": [
       {
-        "title": "notepad-vue",
+        "title": "SillyScribe",
         "width": 800,
         "height": 600
       }

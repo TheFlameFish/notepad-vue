@@ -21,6 +21,6 @@
 
 <template>
     <div class="footer">
-        {{ path || 'No file open' }}&emsp;Lines: {{ lines }}&emsp;Characters: {{ characters }}
+        {{ path || 'No file open' }}&emsp;&emsp;Lines: {{ lines }}&emsp;&emsp;Characters: {{ characters }}
     </div> 
 </template>

@@ -2,7 +2,10 @@
     export default {
         props: {
             path: String,
-            content: String
+            content: {
+                type: String,
+                default: undefined
+            }
         },
         data() {
             return {
@@ -12,8 +15,13 @@
         },
         watch: {
             content(newContent: String) {
-                this.characters = newContent.length;
-                this.lines = newContent.split('\n').length;
+                if (this.content != undefined) {
+                    this.characters = newContent.length;
+                    this.lines = newContent.split('\n').length;
+                } else {
+                    this.characters = 0;
+                    this.lines = 0;
+                }
             }
         }
     }

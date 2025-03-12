@@ -55,11 +55,23 @@
         this.nextId++;
       },
       closeTab(index: number) {
-        let open_id = this.files[this.openFile].id;
+        const open_id = this.files[this.openFile].id;
+        const new_tabs = JSON.parse(JSON.stringify(this.files));
+        new_tabs.splice(index, 1)
         
+        let open_index = 0;
         if (open_id == this.files[index].id) {
-          
+          open_index = 0; // Show no file open page.
+        } else {
+          new_tabs.forEach((file: any, index: number) => {
+            if (file.id == open_id) {
+              open_index = index
+            }
+          });
         }
+
+        this.openFile = open_index;
+        this.files = new_tabs;
       }
     },
     async created() {
@@ -99,7 +111,7 @@
 </script>
 
 <template>
-  <TabBar :files="files" :open-index="openFile" @changeTab="(index: number) => {openFile = index}" @close-tab=""/>
+  <TabBar :files="files" :open-index="openFile" @changeTab="(index: number) => {openFile = index}" @close-tab="closeTab"/>
   <Editor v-model="files[openFile].content">Cheese</Editor>
   <Footer :path="files[openFile].path" :content="files[openFile].content"/>
 </template>

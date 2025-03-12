@@ -29,7 +29,8 @@ export default {
 </script>
 
 <template>
-    <div class="editor">
-        <textarea :value="modelValue" @keydown="handle_key" @input="updateValue"></textarea>
+    <div v-if="modelValue != undefined" class="editor">
+        <textarea autofocus :value="modelValue" @keydown="handle_key" @input="updateValue"></textarea>
     </div>
+    <div v-else class="editor-null"/>
 </template> 

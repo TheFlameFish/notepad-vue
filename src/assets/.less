@@ -3,6 +3,9 @@
 @secondary-background: #282828;
 @secondary-foreground: white;
 
+@tab-background: #18215c;
+@tab-focus-background: #2c3dab;
+
 body, html, #app {
     height: 100%;
     padding: 0;
@@ -16,10 +19,64 @@ body, html, #app {
     flex-direction: column;
 }
 
+.tabBar {
+    color: @secondary-foreground;
+    background-color: @secondary-background;
+    display: flex;
+}
+
+.tab {
+    padding: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    border-style: outset;
+    border-width: 2px;
+
+    display: flex;
+
+    background-color: @tab-background;
+}
+
+.tab > div, .openTab > div { // The part you click on to change the tab
+    cursor: pointer;
+}
+
+.tab:hover, .openTab:hover {
+    border-color: cyan;
+}
+
+.openTab {
+    .tab();
+    background-color: @tab-focus-background;
+    border-style: inset;
+}
+
+.tabClose {
+    background: none;
+    color: @secondary-foreground;
+    border: none;
+    width: min-content;
+    cursor: pointer;
+}
+
+.tabClose:hover {
+    color: red;
+}
+
 .editor {
     flex: 10 1 0%;
     display: flex;
     padding: 0;
+}
+
+.editor-null {
+    .editor();
+    background-color: @primary-background;
+    background-image: url('/src/assets/happi.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 25%;
+    opacity: 0.25;
 }
 
 .editor textarea {
@@ -31,6 +88,7 @@ body, html, #app {
     flex-grow: 1;
     font-size: medium;
     border: none;
+    outline: none;
 }
 
 .footer {
